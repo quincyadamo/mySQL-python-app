@@ -1,0 +1,67 @@
+#wrapper {
+  margin: 10px auto 10px auto;
+  width: 600px;
+  height: 500px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 25%;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+input {
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+.textarea {
+  border: 1px solid black;
+}
+
+.button {
+  padding: 3px;
+  margin-bottom: 20px;
+  margin-left: 80%;
+  border: 1px solid black;
+}
+
+.delete-button {
+  padding: 3px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+.start-button {
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.index {
+  width: 290px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.index * {
+  display: block;
+}
+
+form {
+  display: block;
+}
+
+h5, h5+p, .comment {
+  margin-left: 25px;
+}
+
+header * {
+  display: inline-block;
+}
+
+#headright {
+  position: relative;
+  left: 330px;
+}

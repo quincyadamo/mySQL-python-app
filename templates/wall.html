@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>The Wall</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+  </head>
+  <body>
+    <div id='wrapper'>
+      <header>
+        <h1>The Coding Dojo Wall Forum</h1>
+        <div id="headright">
+          <p>Welcome, {{ first_name }}!</p>
+          <a href="/logoff">Logout</a>
+        </div>
+      </header>
+      <form action="/post_message" method="POST">
+      <label for="message_box">Post a message</label>
+      <textarea class="textarea" name="message_box" id="message_box" cols="100" rows="4"></textarea>
+      <button class="button" type="submit" name="post_message_button">Post a message</button>
+      </form>
+      <div>
+          {% for each in all_messages %}
+            <h4>{{ each['first_name'] }} {{ each['last_name'] }} -
+              {{ each['display_date'] }}</h4>
+              <form action="/delete_message" method="POST">
+                <p>{{ each['message'] }}
+                  {% with messages = get_flashed_messages(category_filter=['del']) %}
+                    {% if messages %}
+                      {% for message in messages %}
+                        <p>{{message}}</p>
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                {% if each['user_id'] == suser_id and each['deletable'] %}
+                  <button class="delete-button" type="submit" name="delete_message_button" value={{ each['id'] }}>Delete
+                  this message</button></p>
+                {% else %}</p>
+                {% endif %}
+              </form>
+              {% for couch in all_comments %}
+                {% if couch['message_id'] == each['id'] %}
+                <h5>{{ couch['first_name'] }} {{ couch['last_name'] }} -
+                  {{ couch['cdisplay_date'] }}</h5>
+                  <p>{{ couch['comment'] }}</p>
+                {% endif %}
+              {% endfor %}
+              <form action="/post_comment" method="POST" class="comment">
+                <label for="comment"+{{ each['id']|string }}>Post a comment</label>
+                <textarea class="textarea" name="comment_box" id="comment_box{{ each['id']|string}}" cols="90" rows="3"></textarea>
+                <button class="button" type="submit" name="post_comment_button" value={{each['id']}}>Post a comment</button>
+              </form>
+          {% endfor %}
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

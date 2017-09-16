@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+  <head>
+    <title>The Wall</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+  </head>
+  <body>
+    <div id='wrapper'>
+      <h1>Register</h1>
+      <form class=register-form action="/check" method="POST" class="index">
+        <label for="reg_first_name">First Name: </label>
+        <input type="text" id="reg_first_name" name="reg_first_name">
+
+        <label for="reg_last_name">Last Name: </label>
+        <input type="text" id="reg_last_name" name="reg_last_name">
+
+        <label for="reg_email">Email: </label>
+        <input type="text" id="reg_email" name="reg_email">
+
+        <label for="reg_password">Password: </label>
+        <input type="password" id="reg_password" name="reg_password">
+
+        <label for="reg_confirm">Confirm Password: </label>
+        <input type="password" id="reg_confirm" name="reg_confirm">
+
+        <input class=start-button type="submit" name="reg_submit" value="Register">
+        {% with messages = get_flashed_messages(category_filter=['reg']) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p>{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </form>
+      <h1>Login</h1>
+      <form class=login-form action="/check" method="POST" class="index">
+        <label for="log_email">Email: </label>
+        <input type="text" id="log_email" name="log_email">
+        <label for="log_password">Password: </label>
+        <input type="password" id="log_password" name="log_password">
+        <input class=start-button class=button type="submit" name="log_submit" value="Login">
+
+        {% with messages = get_flashed_messages(category_filter=['log']) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p>{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </form>
+    </div>
+  </body>
+</html>
