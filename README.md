@@ -1,4 +1,4 @@
-# Python + mySQL Sample App
+# Python + MySQL Sample App
 
 Description:
 This is a wall/forum app using Python and SQL where users are able to post a message and see the message displayed by other users. This app includes login and registration. Authenticated users are able to post comments for any message created by other users.
