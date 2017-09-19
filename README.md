@@ -1,6 +1,9 @@
 # Python + mySQL Sample App
 
 Description:
+This is a wall/forum app using Python and SQL where users are able to post a message and see the message displayed by other users. This app includes login and registration. Authenticated users are able to post comments for any message created by other users.
+
+![Example Image](https://s3.us-east-2.amazonaws.com/qadamo-images/wireframe-wall.png "Example Image")
 
 
 ## Installation & Activation:
